@@ -18,7 +18,7 @@ const bolts = Array.from({ length: 8 }, (_, i) => (i * 360) / 8);
     <div class="porthole__glass">
       {
         profile.photo ? (
-          <img src={profile.photo} alt={alt} width="720" height="720" loading="eager" decoding="async" fetchpriority="high" />
+          <img src={profile.photo} alt={alt} width="400" height="400" loading="eager" decoding="async" fetchpriority="high" />
         ) : (
           <div class="porthole__placeholder" role="img" aria-label={profile.name}>
             <span class="porthole__initials" aria-hidden="true">{profile.initials}</span>

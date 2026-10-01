@@ -34,7 +34,7 @@ scripts/                 ← generación de la imagen Open Graph
 
 ## Foto de perfil
 
-`public/images/brandon.webp` se genera desde la foto original con `scripts/stylize-photo.py` (recorte del fondo, tonos cel-shaded, contorno de tinta y sombra marina). Las instrucciones están en la cabecera del script. La ruta se configura en `profile.photo` (`src/data/profile.ts`); con `null` el ojo de buey vuelve a mostrar las iniciales.
+`public/images/brandon-avatar.svg` es una ilustración 2D cel-shaded (camisa de playa, animada con CSS: respira, parpadea, mueve la cabeza y los rizos; respeta `prefers-reduced-motion`). Se genera con `python3 scripts/generate-avatar.py public/images/brandon-avatar.svg` (solo librería estándar). La ruta se configura en `profile.photo` (`src/data/profile.ts`); con `null` el ojo de buey vuelve a mostrar las iniciales.
 
 ## Pendientes (placeholders)
 

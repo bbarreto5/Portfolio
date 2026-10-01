@@ -11,8 +11,8 @@ export const profile = {
   email: 'brandonbarretolozano@gmail.com',
   linkedin: 'https://www.linkedin.com/in/bbarreto5',
   github: 'https://github.com/bbarreto5',
-  // Foto estilizada con scripts/stylize-photo.py (recorte sin fondo, se compone sobre el mar del ojo de buey)
-  photo: '/images/brandon.webp' as string | null,
+  // Avatar ilustrado y animado (scripts/generate-avatar.py). Fondo transparente: se compone sobre el mar del ojo de buey.
+  photo: '/images/brandon-avatar.svg' as string | null,
   origin: { place: 'San Andrés Isla, Colombia', coords: '12.58° N · 81.70° W' },
   base: { place: 'Barranquilla, Colombia', coords: '10.96° N · 74.78° W' },
   experienceSince: 2018,
@@ -142,7 +142,7 @@ const es = {
     tagline: 'Construyo software de punta a punta —web, móvil, backend y nube— con el Caribe como punto de partida.',
     ctaProjects: 'Ver proyectos',
     ctaContact: 'Contactarme',
-    photoAlt: 'Foto de Brandon Barreto Lozano',
+    photoAlt: 'Ilustración de Brandon Barreto Lozano con camisa de playa',
     photoPending: 'foto pendiente',
     terminal: ['$ whoami', 'brandon — full stack · cloud · mobile', '$ cat origen.txt', 'San Andrés Isla, CO'],
   },
@@ -375,7 +375,7 @@ const en: typeof es = {
     tagline: 'I build software end to end — web, mobile, backend and cloud — with the Caribbean as my starting point.',
     ctaProjects: 'See projects',
     ctaContact: 'Get in touch',
-    photoAlt: 'Photo of Brandon Barreto Lozano',
+    photoAlt: 'Illustration of Brandon Barreto Lozano wearing a beach shirt',
     photoPending: 'photo pending',
     terminal: ['$ whoami', 'brandon — full stack · cloud · mobile', '$ cat origin.txt', 'San Andrés Island, CO'],
   },

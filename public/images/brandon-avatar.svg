@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Ilustración de Brandon Barreto Lozano">
+  <!-- Avatar ilustrado de Brandon Barreto Lozano · estilo cel del portafolio "El mar de los siete colores" -->
+  <style>
+    .av-body { transform-origin: 200px 400px; animation: av-breathe 5s ease-in-out infinite; }
+    .av-head { transform-origin: 200px 300px; animation: av-tilt 7s ease-in-out infinite; }
+    .av-hair { transform-origin: 200px 200px; animation: av-hair 7s ease-in-out infinite; }
+    .av-eye { transform-box: fill-box; transform-origin: center; animation: av-blink 5.5s infinite; }
+    .av-brow { animation: av-brow 7s ease-in-out infinite; }
+    .av-curl { transform-box: fill-box; transform-origin: 50% 100%; animation: av-curl 3.6s ease-in-out infinite; }
+    .av-glint { animation: av-glint 6s ease-in-out infinite; }
+    @keyframes av-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(1.012) translateY(-1px); } }
+    @keyframes av-tilt { 0%,100% { transform: rotate(-1.6deg) translateY(0); } 50% { transform: rotate(1.4deg) translateY(-2px); } }
+    @keyframes av-hair { 0%,100% { transform: rotate(-0.6deg); } 55% { transform: rotate(0.8deg) translateY(-1px); } }
+    @keyframes av-blink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(0.08); } }
+    @keyframes av-brow { 0%,40%,100% { transform: translateY(0); } 48%,58% { transform: translateY(-3px); } }
+    @keyframes av-curl { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+    @keyframes av-glint { 0%,70%,100% { opacity: 0; } 78% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .av-body, .av-head, .av-hair, .av-eye, .av-brow, .av-curl, .av-glint { animation: none; }
+    }
+  </style>
+  <defs>
+    <clipPath id="av-shirt-clip">
+      <path d="M8 400 C 20 352, 84 322, 150 312 L 200 372 L 250 312 C 316 322, 380 352, 392 400 Z"/>
+    </clipPath>
+    <clipPath id="av-face-clip">
+      <path id="av-face-shape" d="M122 172 C 120 120, 158 102, 200 102 C 242 102, 280 120, 278 172 C 280 226, 268 266, 244 290 C 228 306, 172 306, 156 290 C 132 266, 120 226, 122 172 Z"/>
+    </clipPath>
+  </defs>
+
+  <g class="av-body">
+    <!-- cuello -->
+    <path d="M166 246 L166 320 Q200 340 234 320 L234 246 Z" fill="#a96650" stroke="#0f2236" stroke-width="4" stroke-linejoin="round"/>
+    <!-- camisa de playa -->
+    <path d="M8 400 C 20 352, 84 322, 150 312 L 200 372 L 250 312 C 316 322, 380 352, 392 400 Z" fill="#ffc83d" stroke="#0f2236" stroke-width="4" stroke-linejoin="round"/>
+    <g clip-path="url(#av-shirt-clip)">
+      <g transform="translate(40 372) rotate(-30) scale(1.0)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#23894b" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(60 360) rotate(20) scale(0.8)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#3fbf6e" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(92 352) scale(1.0)"><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(0)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(72)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(144)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(216)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(288)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><circle r="3.5" fill="#ffc83d" stroke="#0f2236" stroke-width="1.6"/></g><g transform="translate(112 392) rotate(-60) scale(0.9)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#3fbf6e" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(136 340) rotate(40) scale(0.7)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#23894b" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(300 360) rotate(200) scale(0.9)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#23894b" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(322 384) scale(1.1)"><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(0)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(72)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(144)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(216)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(288)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><circle r="3.5" fill="#ffc83d" stroke="#0f2236" stroke-width="1.6"/></g><g transform="translate(268 345) rotate(150) scale(0.75)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#3fbf6e" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(350 350) rotate(230) scale(0.8)"><path d="M0 0 C 14 -10, 34 -10, 48 0 C 34 10, 14 10, 0 0 Z" fill="#3fbf6e" stroke="#0f2236" stroke-width="2.5"/><path d="M4 0 H44" stroke="#0f2236" stroke-width="1.6" opacity="0.6"/></g><g transform="translate(258 392) scale(0.8)"><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(0)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(72)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(144)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(216)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(288)" fill="#ff6a4d" stroke="#0f2236" stroke-width="2"/><circle r="3.5" fill="#ffc83d" stroke="#0f2236" stroke-width="1.6"/></g>
+      <path d="M8 400 C 20 360, 70 334, 120 324 L 108 400 Z" fill="#f0a12a" opacity="0.45"/>
+    </g>
+    <!-- pecho en la abertura -->
+    <path d="M168 312 L200 372 L232 312 Q200 330 168 312 Z" fill="#d98a66" stroke="#0f2236" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- cuello de la camisa (solapas) -->
+    <path d="M150 312 L170 298 L200 372 L166 346 Z" fill="#f0a12a" stroke="#0f2236" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M250 312 L230 298 L200 372 L234 346 Z" fill="#f0a12a" stroke="#0f2236" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- gafas de sol colgadas en la camisa -->
+    <g transform="translate(200 382) rotate(-6)">
+      <path d="M-30 -6 h24 a3 3 0 0 1 3 3 v4 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 v-4 a3 3 0 0 1 3 -3 Z" fill="#0f2236"/>
+      <path d="M6 -6 h24 a3 3 0 0 1 3 3 v4 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 v-4 a3 3 0 0 1 3 -3 Z" fill="#0f2236"/>
+      <path d="M-3 -3 q3 -3 6 0" fill="none" stroke="#0f2236" stroke-width="3"/>
+      <path d="M-26 -2 l8 8 M10 -2 l8 8" stroke="#14b8b0" stroke-width="3" stroke-linecap="round" class="av-glint"/>
+    </g>
+  </g>
+
+  <g class="av-head">
+    <!-- orejas -->
+    <ellipse cx="120" cy="212" rx="14" ry="22" fill="#d98a66" stroke="#0f2236" stroke-width="4"/>
+    <path d="M118 202 q 6 10 0 20" fill="none" stroke="#a96650" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="280" cy="212" rx="14" ry="22" fill="#a96650" stroke="#0f2236" stroke-width="4"/>
+    <path d="M282 202 q -6 10 0 20" fill="none" stroke="#8a5040" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- cara -->
+    <use href="#av-face-shape" fill="#d98a66"/>
+    <g clip-path="url(#av-face-clip)">
+      <!-- sombra cel (luz desde la izquierda) -->
+      <path d="M242 102 C 270 150, 276 230, 244 304 L 300 300 L 300 100 Z" fill="#a96650"/>
+      <!-- sombra bajo el pelo -->
+      <path d="M120 120 Q 200 150 280 120 L 280 100 L 120 100 Z" fill="#a96650" opacity="0.55"/>
+      <!-- brillos -->
+      <ellipse cx="166" cy="222" rx="14" ry="9" fill="#eea283" opacity="0.8"/>
+      <ellipse cx="186" cy="146" rx="22" ry="8" fill="#eea283" opacity="0.6"/>
+    </g>
+    <use href="#av-face-shape" fill="none" stroke="#0f2236" stroke-width="4"/>
+
+    <!-- barba completa con candado: mejillas bajas, mandíbula y mentón -->
+    <path d="M123 190 C 124 246, 146 296, 200 318 C 254 296, 276 246, 277 190 L 271 192 C 268 228, 256 252, 240 262 C 236 246, 222 236, 200 236 C 178 236, 164 246, 160 262 C 144 252, 132 228, 129 192 Z" fill="#1f1817" stroke="#0f2236" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- piel a los lados de la perilla, bajo el labio -->
+    <path d="M180 278 Q 185 290 194 293 L 194 281 Q 188 278 180 278 Z" fill="#a96650"/>
+    <path d="M220 278 Q 215 290 206 293 L 206 281 Q 212 278 220 278 Z" fill="#a96650"/>
+    <!-- textura de barba -->
+    <g stroke="#3b2e2a" stroke-width="2" stroke-linecap="round" opacity="0.9">
+      <path d="M150 262 l4 6 M160 280 l3 6 M178 300 l2 6 M222 300 l-2 6 M240 280 l-3 6 M250 262 l-4 6 M144 238 l4 5 M256 238 l-4 5"/>
+    </g>
+    <!-- bigote -->
+    <path d="M166 258 C 172 242, 188 238, 200 242 C 212 238, 228 242, 234 258 C 222 250, 210 250, 200 254 C 190 250, 178 250, 166 258 Z" fill="#1f1817" stroke="#0f2236" stroke-width="3" stroke-linejoin="round"/>
+    <!-- labios -->
+    <path d="M180 262 Q 200 268 220 262 Q 212 276 200 277 Q 188 276 180 262 Z" fill="#8a3f31" stroke="#0f2236" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M190 268 q 10 3 20 0" fill="none" stroke="#b5604d" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M178 261 Q 200 266 222 261" fill="none" stroke="#0f2236" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- nariz -->
+    <path d="M204 178 C 206 196, 212 210, 218 220 C 214 230, 204 232, 198 228" fill="none" stroke="#a96650" stroke-width="5" stroke-linecap="round"/>
+    <path d="M184 222 C 186 230, 196 233, 200 230 C 206 233, 214 230, 216 222" fill="none" stroke="#0f2236" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="192" cy="226" rx="3.5" ry="2.2" fill="#0f2236" opacity="0.7"/>
+    <ellipse cx="209" cy="226" rx="3.5" ry="2.2" fill="#0f2236" opacity="0.7"/>
+    <ellipse cx="200" cy="214" rx="5" ry="4" fill="#eea283"/>
+
+    <!-- ojos -->
+    <g class="av-eye" transform="translate(-4 0)">
+      <path d="M152 188 Q 170 174 188 187 Q 170 195 152 188 Z" fill="#fffaf0"/>
+      <circle cx="171" cy="186" r="7" fill="#2b1710"/>
+      <circle cx="173.5" cy="183.5" r="2.2" fill="#fffaf0"/>
+      <path d="M150 188 Q 170 171 190 186" fill="none" stroke="#0f2236" stroke-width="4" stroke-linecap="round"/>
+      <path d="M156 192 Q 170 197 184 191" fill="none" stroke="#a96650" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g class="av-eye" transform="translate(4 0)">
+      <path d="M212 187 Q 230 174 248 188 Q 230 195 212 187 Z" fill="#fffaf0"/>
+      <circle cx="229" cy="186" r="7" fill="#2b1710"/>
+      <circle cx="231.5" cy="183.5" r="2.2" fill="#fffaf0"/>
+      <path d="M210 186 Q 230 171 250 188" fill="none" stroke="#0f2236" stroke-width="4" stroke-linecap="round"/>
+      <path d="M216 191 Q 230 197 244 192" fill="none" stroke="#8a5040" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <!-- cejas gruesas -->
+    <g class="av-brow" fill="#24160f" stroke="#0f2236" stroke-width="2" stroke-linejoin="round">
+      <path d="M140 170 C 150 155, 172 151, 190 159 L 188 168 C 172 161, 156 164, 144 177 Z"/>
+      <path d="M260 170 C 250 155, 228 151, 210 159 L 212 168 C 228 161, 244 164, 256 177 Z"/>
+    </g>
+
+    <!-- pelo rizado -->
+    <g class="av-hair">
+      <path d="M100 155.4 Q86 147.4 96.5 140.1 Q79.3 129.2 96.4 124.2 Q86.7 112.5 99.9 108.3 Q89.2 93.9 106.8 93.9 Q102.1 79.8 116.9 79.7 Q115.5 68.4 129.9 72.3 Q126.8 52.2 145.2 60.8 Q148.2 44.5 162.4 50.9 Q168.2 37.4 180.9 48.4 Q188.7 28.1 200 45.3 Q211.3 30.7 219.1 52 Q232.1 40.2 237.6 53.9 Q254.6 41.3 254.8 62.1 Q271.6 53.6 270.1 69.8 Q288.4 64 283.1 81.1 Q298.5 81.4 293.2 96.1 Q313.3 94.8 300.1 109.6 Q317.5 112 303.6 124.5 Q322 129.2 303.5 140.2 Q319.9 147.5 300 155.6 Q303.4 162.9 290 168 Q292.8 184 279 194 Q275.5 182.8 272 160 Q265 154.7 258 138 Q247 137.3 236 126 Q225 131.5 214 124 Q207 134 200 128 Q192 131 184 124 Q173 134.4 162 128 Q152 140.7 142 140 Q135 157.5 128 162 Q124.5 187.1 121 194 Q106.7 184.2 110 168 Q96.5 162.7 100 155.4 Z" fill="#1b1819" stroke="#0f2236" stroke-width="4" stroke-linejoin="round"/>
+      <g fill="none" stroke="#4a3f3b" stroke-width="3" stroke-linecap="round">
+      <path d="M117 172 a5.1 5.1 0 0 1 10.1 0" transform="rotate(154.9 122 172)"/>
+      <path d="M243.9 99.6 a6.7 6.7 0 0 1 13.5 0" transform="rotate(-37.6 250.6 99.6)"/>
+      <path d="M271.7 97 a6.1 6.1 0 0 1 12.1 0" transform="rotate(96.4 277.8 97)"/>
+      <path d="M241.3 68.9 a7.2 7.2 0 0 1 14.5 0" transform="rotate(167.3 248.5 68.9)"/>
+      <path d="M265.8 96.5 a7.8 7.8 0 0 1 15.5 0" transform="rotate(101.7 273.6 96.5)"/>
+      <path d="M161.5 93.7 a5.5 5.5 0 0 1 11.1 0" transform="rotate(-19.7 167 93.7)"/>
+      <path d="M113.9 173.4 a6.6 6.6 0 0 1 13.2 0" transform="rotate(65.5 120.5 173.4)"/>
+      <path d="M251.2 110.2 a6.3 6.3 0 0 1 12.5 0" transform="rotate(-25.5 257.4 110.2)"/>
+      <path d="M127.1 143.1 a7.8 7.8 0 0 1 15.7 0" transform="rotate(123.9 135 143.1)"/>
+      <path d="M244.4 68.7 a6.3 6.3 0 0 1 12.6 0" transform="rotate(-1.2 250.7 68.7)"/>
+      <path d="M254.3 91.1 a6.4 6.4 0 0 1 12.7 0" transform="rotate(219.8 260.7 91.1)"/>
+      <path d="M184.6 114.1 a7.2 7.2 0 0 1 14.4 0" transform="rotate(84.6 191.8 114.1)"/>
+      <path d="M157.8 104.1 a5.4 5.4 0 0 1 10.9 0" transform="rotate(58 163.2 104.1)"/>
+      <path d="M279.1 170.2 a6.9 6.9 0 0 1 13.8 0" transform="rotate(89.8 286 170.2)"/>
+      <path d="M165.8 66.6 a5.8 5.8 0 0 1 11.6 0" transform="rotate(163.3 171.6 66.6)"/>
+      <path d="M257.3 99 a7.4 7.4 0 0 1 14.7 0" transform="rotate(161.5 264.7 99)"/>
+      <path d="M238.6 99.2 a7.1 7.1 0 0 1 14.2 0" transform="rotate(33 245.7 99.2)"/>
+      <path d="M225.8 91 a7.8 7.8 0 0 1 15.7 0" transform="rotate(128.9 233.6 91)"/>
+      <path d="M207.6 57.4 a6.6 6.6 0 0 1 13.3 0" transform="rotate(25.2 214.2 57.4)"/>
+      <path d="M222.8 111.1 a7.5 7.5 0 0 1 14.9 0" transform="rotate(128.3 230.2 111.1)"/>
+      <path d="M245.4 97.4 a6.9 6.9 0 0 1 13.9 0" transform="rotate(151.8 252.4 97.4)"/>
+      <path d="M250.2 97.7 a7.5 7.5 0 0 1 15.1 0" transform="rotate(186.2 257.8 97.7)"/>
+      <path d="M273.8 117.7 a6.6 6.6 0 0 1 13.2 0" transform="rotate(3.2 280.3 117.7)"/>
+      <path d="M233.3 59.3 a5.5 5.5 0 0 1 11 0" transform="rotate(74.7 238.8 59.3)"/>
+      <path d="M219.4 82.1 a7.1 7.1 0 0 1 14.1 0" transform="rotate(124 226.4 82.1)"/>
+      <path d="M113.7 112.1 a5.7 5.7 0 0 1 11.4 0" transform="rotate(-25.9 119.4 112.1)"/>
+      </g>
+      <g fill="none" stroke="#0f2236" stroke-width="5" stroke-linecap="round">
+      <g class="av-curl" style="animation-delay:0.0s"><path d="M150 62 c -4 -10 6 -16 12 -10 c 4 4 0 10 -5 8" transform="rotate(-20 150 62)"/></g>
+    <g class="av-curl" style="animation-delay:-0.9s"><path d="M205 46 c -4 -10 6 -16 12 -10 c 4 4 0 10 -5 8" transform="rotate(8 205 46)"/></g>
+    <g class="av-curl" style="animation-delay:-1.8s"><path d="M258 64 c -4 -10 6 -16 12 -10 c 4 4 0 10 -5 8" transform="rotate(30 258 64)"/></g>
+    <g class="av-curl" style="animation-delay:-2.7s"><path d="M116 104 c -4 -10 6 -16 12 -10 c 4 4 0 10 -5 8" transform="rotate(-50 116 104)"/></g>
+      </g>
+    </g>
+  </g>
+</svg>
