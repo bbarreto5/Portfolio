@@ -1,0 +1,226 @@
+---
+import { profile, type Content } from '../data/profile';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+---
+
+<header class="nav">
+  <div class="nav__bar">
+    <a class="nav__brand" href="#top" aria-label={profile.name}>
+      <span class="nav__mark" aria-hidden="true">{profile.initials}</span>
+      <span class="nav__coords">{profile.origin.coords}</span>
+    </a>
+
+    <nav aria-label={t.nav.label}>
+      <ul class="nav__links">
+        {
+          t.nav.items.map((item) => (
+            <li>
+              <a href={item.href} data-nav-link>
+                <span class="nav__num" aria-hidden="true">{item.coord}</span>
+                <span class="nav__label">{item.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="nav__lang" href={t.nav.langSwitch.href} hreflang={t.nav.langSwitch.label.toLowerCase()} aria-label={t.nav.langSwitch.aria}>
+      {t.nav.langSwitch.label}
+    </a>
+
+    <div class="nav__route" aria-hidden="true">
+      <svg class="nav__boat" viewBox="0 0 28 24">
+        <path d="M13 2v15M13 3l9 12h-9z" fill="#fffaf0" stroke="#0f2236" stroke-width="2" stroke-linejoin="round"></path>
+        <path d="M3 17h22l-4 5H7z" fill="#ff6a4d" stroke="#0f2236" stroke-width="2" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 14px 0 auto;
+    z-index: 50;
+    padding-inline: var(--gutter);
+    pointer-events: none;
+  }
+  .nav__bar {
+    position: relative;
+    max-width: var(--max);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 8px 8px 10px;
+    background: var(--cream);
+    border: var(--outline) solid var(--ink);
+    border-radius: 999px;
+    box-shadow: var(--shadow-cel-sm);
+    pointer-events: auto;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .nav__mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: var(--outline) solid var(--ink);
+    border-radius: 50%;
+    background: var(--sea-3);
+    color: var(--cream);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+  .nav__coords {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+  }
+  .nav__links {
+    display: flex;
+    gap: 4px;
+  }
+  .nav__links a {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 650;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .nav__links a:hover {
+    background: var(--sea-1);
+  }
+  .nav__links a[aria-current] {
+    background: var(--sun);
+  }
+  .nav__num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+  }
+  .nav__lang {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    height: 40px;
+    padding-inline: 12px;
+    border: var(--outline) solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav__lang:hover {
+    background: var(--coral);
+    color: var(--ink);
+  }
+
+  /* Ruta punteada + velero que avanza con el scroll */
+  .nav__route {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: -9px;
+    height: 0;
+    border-top: 2px dashed color-mix(in srgb, var(--ink) 45%, transparent);
+  }
+  .nav__boat {
+    position: absolute;
+    top: -15px;
+    left: calc(var(--scroll-progress, 0) * 100%);
+    width: 22px;
+    height: 19px;
+    transform: translateX(-50%);
+    animation: bob 3.2s ease-in-out infinite;
+  }
+
+  /* ---- Tablet: sin coordenadas ---- */
+  @media (max-width: 960px) {
+    .nav__coords {
+      display: none;
+    }
+    .nav__num {
+      display: none;
+    }
+  }
+
+  /* ---- Mobile: marca arriba, navegación como barra inferior ---- */
+  @media (max-width: 720px) {
+    .nav {
+      inset: 10px 0 auto;
+    }
+    .nav__bar {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      pointer-events: none;
+    }
+    .nav__brand,
+    .nav__lang {
+      pointer-events: auto;
+    }
+    .nav__mark {
+      box-shadow: var(--shadow-cel-sm);
+    }
+    .nav__lang {
+      box-shadow: var(--shadow-cel-sm);
+    }
+    .nav__route {
+      display: none;
+    }
+    nav {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: max(10px, env(safe-area-inset-bottom));
+      pointer-events: auto;
+    }
+    .nav__links {
+      justify-content: space-between;
+      padding: 6px;
+      background: var(--cream);
+      border: var(--outline) solid var(--ink);
+      border-radius: 22px;
+      box-shadow: var(--shadow-cel-sm);
+    }
+    .nav__links li {
+      flex: 1;
+    }
+    .nav__links a {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 7px 2px;
+      border-radius: 16px;
+      font-size: 0.72rem;
+      line-height: 1.2;
+    }
+    .nav__num {
+      display: block;
+      font-size: 0.62rem;
+    }
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+import { profile, type Content } from '../data/profile';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+---
+
+<section class="about section" id="sobre-mi" aria-labelledby="about-title">
+  <div class="wrap about__grid">
+    <div class="about__text">
+      <p class="kicker" data-reveal>{t.about.kicker}</p>
+      <h2 id="about-title" class="section-title" data-reveal>{t.about.title}</h2>
+      <div class="about__body">
+        {t.about.paragraphs.map((p, i) => <p data-reveal style={`--reveal-i:${i}`}>{p}</p>)}
+      </div>
+    </div>
+
+    <figure class="about__chart" data-reveal>
+      <svg viewBox="0 0 320 400" role="img" aria-labelledby="chart-title">
+        <title id="chart-title">{profile.origin.place} — {profile.origin.coords}</title>
+        <!-- retícula de carta náutica -->
+        <g stroke="var(--ink)" stroke-opacity="0.14" stroke-width="1.5">
+          {[60, 130, 200, 270, 340].map((y) => <line x1="0" x2="320" y1={y} y2={y} />)}
+          {[50, 130, 210, 290].map((x) => <line x1={x} x2={x} y1="0" y2="400" />)}
+        </g>
+        <!-- arrecife alrededor -->
+        <path
+          d="M150 34 C 210 40, 232 110, 214 170 C 204 214, 222 268, 196 330 C 180 372, 128 378, 112 334 C 96 290, 76 240, 92 186 C 104 140, 84 92, 104 60 C 116 42, 132 32, 150 34 Z"
+          fill="var(--sea-1)"
+          stroke="var(--sea-3)"
+          stroke-width="3"
+          stroke-dasharray="10 8"></path>
+        <!-- isla estilizada (alargada de norte a sur) -->
+        <path
+          d="M146 62 C 182 64, 192 112, 182 160 C 176 196, 190 250, 172 300 C 162 330, 136 336, 128 306 C 120 272, 108 236, 116 196 C 122 156, 108 112, 120 84 C 126 70, 136 62, 146 62 Z"
+          fill="var(--palm)"
+          stroke="var(--ink)"
+          stroke-width="4"
+          stroke-linejoin="round"></path>
+        <path d="M150 92 C 162 120, 160 160, 152 200 C 146 236, 156 268, 150 296" fill="none" stroke="var(--palm-dark)" stroke-width="6" stroke-linecap="round"></path>
+        <!-- cayo cercano -->
+        <circle cx="222" cy="96" r="9" fill="var(--sand-deep)" stroke="var(--ink)" stroke-width="3"></circle>
+        <!-- pin -->
+        <g transform="translate(160 84)">
+          <path d="M0 0 c -14 -16 -16 -24 -16 -30 a 16 16 0 0 1 32 0 c 0 6 -2 14 -16 30 Z" fill="var(--coral)" stroke="var(--ink)" stroke-width="3.5" stroke-linejoin="round"></path>
+          <circle cy="-30" r="5.5" fill="var(--cream)" stroke="var(--ink)" stroke-width="2.5"></circle>
+        </g>
+        <!-- rosa de los vientos -->
+        <g transform="translate(266 344)">
+          <circle r="30" fill="var(--cream)" stroke="var(--ink)" stroke-width="3"></circle>
+          <path d="M0 -24 L6 0 L0 24 L-6 0 Z" fill="var(--ink)"></path>
+          <path d="M0 -24 L6 0 L-6 0 Z" fill="var(--coral)"></path>
+          <path d="M-24 0 L0 -5 L24 0 L0 5 Z" fill="var(--ink)" opacity="0.5"></path>
+          <text y="-34" text-anchor="middle" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--ink)">N</text>
+        </g>
+        <!-- ruta hacia el continente -->
+        <path d="M176 300 C 210 340, 230 380, 300 396" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="6 7" stroke-linecap="round"></path>
+      </svg>
+      <figcaption>
+        <span class="about__place">{profile.origin.place}</span>
+        <span class="about__coords">{profile.origin.coords}</span>
+      </figcaption>
+    </figure>
+
+    <dl class="about__facts">
+      {
+        t.about.facts.map((f, i) => (
+          <div data-reveal style={`--reveal-i:${i}`}>
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--sand);
+  }
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+  }
+  .about__body {
+    display: grid;
+    gap: 18px;
+    margin-top: 28px;
+    max-width: 60ch;
+    font-size: 1.08em;
+  }
+  .about__body p:first-child {
+    font-size: 1.22em;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .about__chart {
+    margin: 0;
+    padding: 18px;
+    background: var(--cream);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-cel);
+    rotate: 2deg;
+  }
+  .about__chart svg {
+    width: 100%;
+    height: auto;
+  }
+  .about__chart figcaption {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .about__place {
+    font-weight: 750;
+  }
+  .about__coords {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .about__facts {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    border-top: var(--outline) solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
+  }
+  .about__facts div {
+    padding: 20px 18px;
+  }
+  .about__facts div + div {
+    border-left: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .about__facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  .about__facts dd {
+    margin: 6px 0 0;
+    font-weight: 750;
+    font-size: 1.12rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 860px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+    .about__chart {
+      max-width: 340px;
+      justify-self: center;
+      rotate: -1.5deg;
+    }
+    .about__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .about__facts div:nth-child(3) {
+      border-left: 0;
+    }
+    .about__facts div:nth-child(n + 3) {
+      border-top: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+    }
+  }
+</style>

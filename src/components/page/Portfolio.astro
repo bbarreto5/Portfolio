@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../Nav.astro';
+import Hero from '../Hero.astro';
+import About from '../About.astro';
+import Logbook from '../Logbook.astro';
+import Expeditions from '../Expeditions.astro';
+import Archipelago from '../Archipelago.astro';
+import Instruments from '../Instruments.astro';
+import Course from '../Course.astro';
+import Contact from '../Contact.astro';
+import { content, type Lang } from '../../data/profile';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<Base lang={lang} t={t}>
+  <Nav t={t} />
+  <main id="contenido">
+    <Hero t={t} />
+    <About t={t} />
+    <Logbook t={t} />
+    <Expeditions t={t} />
+    <Archipelago t={t} />
+    <Instruments t={t} />
+    <Course t={t} />
+    <Contact t={t} />
+  </main>
+</Base>

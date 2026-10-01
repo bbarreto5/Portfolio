@@ -1,0 +1,126 @@
+---
+import type { Content } from '../data/profile';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+---
+
+<section class="course" id="rumbo" aria-labelledby="course-title">
+  <div class="wrap course__inner" data-reveal>
+    <svg class="course__compass" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+      <circle cx="80" cy="80" r="72" fill="var(--cream)" stroke="var(--ink)" stroke-width="4"></circle>
+      <circle cx="80" cy="80" r="56" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="3 7"></circle>
+      {
+        ['N', 'E', 'S', 'W'].map((d, i) => (
+          <text
+            x={80 + Math.sin((i * Math.PI) / 2) * 62}
+            y={84 - Math.cos((i * Math.PI) / 2) * 62}
+            text-anchor="middle"
+            dominant-baseline="middle"
+            font-size="13"
+            font-weight="700"
+            font-family="var(--font-mono)"
+            fill="var(--ink)">
+            {d}
+          </text>
+        ))
+      }
+      <g class="course__needle">
+        <path d="M80 26 L92 80 L80 134 L68 80 Z" fill="var(--ink)"></path>
+        <path d="M80 26 L92 80 L68 80 Z" fill="var(--coral)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"></path>
+      </g>
+      <circle cx="80" cy="80" r="8" fill="var(--sun)" stroke="var(--ink)" stroke-width="3"></circle>
+    </svg>
+
+    <div>
+      <p class="kicker">{t.course.kicker}</p>
+      <h2 id="course-title" class="course__title">{t.course.title}</h2>
+      <p class="course__text">{t.course.text}</p>
+      <ul class="course__chips">
+        {t.course.chips.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .course {
+    position: relative;
+    padding-block: clamp(64px, 9vw, 120px);
+    background: var(--sun);
+    border-top: var(--outline) solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
+    overflow: hidden;
+  }
+  /* rayas diagonales crema, eco directo de la referencia */
+  .course::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-28deg, transparent 0 90px, rgb(255 250 240 / 0.45) 90px 104px);
+    pointer-events: none;
+  }
+  .course__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+  .course__compass {
+    width: clamp(120px, 16vw, 200px);
+    filter: drop-shadow(5px 5px 0 var(--ink));
+  }
+  .course__needle {
+    transform-origin: 80px 80px;
+    animation: course-seek 7s var(--ease-out) infinite;
+  }
+  @keyframes course-seek {
+    0%,
+    100% {
+      transform: rotate(38deg);
+    }
+    45% {
+      transform: rotate(52deg);
+    }
+    70% {
+      transform: rotate(32deg);
+    }
+  }
+  .course__title {
+    margin-top: 10px;
+    font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.4rem);
+  }
+  .course__text {
+    margin-top: 16px;
+    max-width: 58ch;
+    font-size: 1.12em;
+    font-weight: 550;
+  }
+  .course__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .course__chips li {
+    padding: 7px 16px;
+    background: var(--cream);
+    border: var(--outline) solid var(--ink);
+    border-radius: 999px;
+    box-shadow: var(--shadow-cel-sm);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 640px) {
+    .course__inner {
+      grid-template-columns: 1fr;
+    }
+    .course__compass {
+      width: 112px;
+    }
+  }
+</style>

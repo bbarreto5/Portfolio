@@ -1,0 +1,120 @@
+---
+import type { Content } from '../data/profile';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+
+const icons: Record<string, string> = {
+  server: '<rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><path d="M8 6.5h.01M8 17.5h.01M12 6.5h4M12 17.5h4"/>',
+  layout: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>',
+  phone: '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/>',
+  cloud: '<path d="M7 18h10.5a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.34 9.1 4.5 4.5 0 0 0 7 18Z"/>',
+  db: '<ellipse cx="12" cy="5.5" rx="7" ry="2.8"/><path d="M5 5.5v13c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-13M5 12c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8"/>',
+  map: '<path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"/><path d="M9 4v13M15 6.5v13"/>',
+  flow: '<circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6.3 8.2l4.4 7.6M17.7 8.2l-4.4 7.6"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>',
+  crew: '<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.3c3.2-.6 6 1.8 6 5.2"/>',
+};
+const iconBg = ['var(--sea-2)', 'var(--sun)', 'var(--coral)', 'var(--palm)'];
+---
+
+<section class="inst section" id="capacidades" aria-labelledby="inst-title">
+  <div class="wrap">
+    <p class="kicker" data-reveal>{t.instruments.kicker}</p>
+    <h2 id="inst-title" class="section-title" data-reveal>{t.instruments.title}</h2>
+
+    <ul class="inst__list">
+      {
+        t.instruments.items.map((item, i) => (
+          <li class="inst__item" data-reveal style={`--reveal-i:${i % 3}`}>
+            <span class="inst__icon" style={`background:${iconBg[i % iconBg.length]}`} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[item.icon]} />
+            </span>
+            <div>
+              <h3 class="inst__title">{item.title}</h3>
+              <p class="inst__text">{item.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .inst {
+    background: var(--sand);
+    border-top: var(--outline) solid var(--ink);
+  }
+  .inst__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: clamp(40px, 6vw, 72px);
+    border-top: var(--outline) solid var(--ink);
+  }
+  .inst__item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 26px 22px 28px 0;
+    border-bottom: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .inst__item:not(:nth-child(3n + 1)) {
+    padding-left: 22px;
+    border-left: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .inst__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: var(--outline) solid var(--ink);
+    border-radius: 16px;
+    box-shadow: var(--shadow-cel-sm);
+    transition: transform 0.3s var(--ease-bounce);
+  }
+  .inst__item:hover .inst__icon {
+    transform: rotate(-8deg) scale(1.06);
+  }
+  .inst__icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .inst__title {
+    font-size: 1.2rem;
+  }
+  .inst__text {
+    margin-top: 6px;
+    color: var(--ink-soft);
+    font-size: 0.97em;
+  }
+
+  @media (max-width: 960px) {
+    .inst__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .inst__item:not(:nth-child(3n + 1)) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .inst__item:nth-child(2n) {
+      padding-left: 22px;
+      border-left: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+    }
+  }
+  @media (max-width: 600px) {
+    .inst__list {
+      grid-template-columns: 1fr;
+    }
+    .inst__item:nth-child(2n) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .inst__item {
+      padding-right: 0;
+    }
+  }
+</style>

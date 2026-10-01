@@ -1,0 +1,118 @@
+---
+// Cayo con casa de madera de estilo raizal (pilotes, tablas, porche y techo a dos aguas).
+// La ventana de la casa es una terminal: la tecnología vive dentro del paisaje.
+import Palm from './Palm.astro';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 560 380" aria-hidden="true" focusable="false">
+  <!-- anillo de agua clara alrededor del cayo -->
+  <ellipse cx="280" cy="322" rx="275" ry="46" fill="var(--sea-1)" stroke="var(--ink)" stroke-width="3"></ellipse>
+  <ellipse cx="280" cy="322" rx="236" ry="34" fill="none" stroke="var(--cream)" stroke-width="4" stroke-dasharray="22 14" class="foam"></ellipse>
+
+  <!-- arena -->
+  <path d="M40 320 C 90 268, 470 262, 522 318 C 488 346, 84 350, 40 320 Z" fill="var(--sand-deep)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"></path>
+  <path d="M86 322 C 170 304, 380 302, 480 318 C 420 334, 150 338, 86 322 Z" fill="var(--sand)"></path>
+
+  <!-- palmeras de fondo -->
+  <Palm x={118} y={312} scale={0.95} lean={-26} delay={-1.2} />
+  <Palm x={176} y={308} scale={0.78} lean={14} delay={-3.1} />
+
+  <!-- casa raizal -->
+  <g class="house">
+    <!-- pilotes -->
+    <rect x="252" y="268" width="9" height="44" fill="var(--wood)" stroke="var(--ink)" stroke-width="3"></rect>
+    <rect x="300" y="268" width="9" height="44" fill="var(--wood)" stroke="var(--ink)" stroke-width="3"></rect>
+    <rect x="352" y="268" width="9" height="44" fill="var(--wood)" stroke="var(--ink)" stroke-width="3"></rect>
+    <!-- muros de tablas -->
+    <rect x="236" y="176" width="142" height="96" fill="#ff8fa3" stroke="var(--ink)" stroke-width="4"></rect>
+    {[194, 212, 230, 248].map((y) => <line x1="238" x2="376" y1={y} y2={y} stroke="var(--ink)" stroke-width="1.5" opacity="0.3" />)}
+    <rect x="236" y="176" width="20" height="96" fill="#e66c84" opacity="0.6"></rect>
+    <!-- techo -->
+    <path d="M222 182 L307 118 L392 182 Z" fill="var(--sea-5)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"></path>
+    <path d="M307 118 L392 182 L366 182 Z" fill="var(--sea-6)"></path>
+    <path d="M232 182 H382" stroke="var(--cream)" stroke-width="5"></path>
+    <!-- calado decorativo bajo el alero -->
+    <path d="M240 186 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0 q 7 8 14 0" fill="none" stroke="var(--cream)" stroke-width="3"></path>
+    <!-- ventana-terminal -->
+    <rect x="252" y="202" width="70" height="48" rx="4" fill="var(--ink)" stroke="var(--ink)" stroke-width="4"></rect>
+    <rect x="248" y="198" width="78" height="56" rx="6" fill="none" stroke="var(--cream)" stroke-width="4"></rect>
+    <rect x="260" y="211" width="26" height="4" rx="2" fill="var(--sea-2)"></rect>
+    <rect x="260" y="221" width="42" height="4" rx="2" fill="var(--sun)"></rect>
+    <rect x="260" y="231" width="18" height="4" rx="2" fill="var(--sea-2)"></rect>
+    <rect x="282" y="229" width="7" height="9" fill="var(--cream)" class="cursor"></rect>
+    <!-- puerta -->
+    <rect x="338" y="208" width="26" height="64" fill="var(--wood)" stroke="var(--ink)" stroke-width="4"></rect>
+    <circle cx="358" cy="242" r="2.5" fill="var(--ink)"></circle>
+    <!-- porche con baranda -->
+    <rect x="228" y="268" width="158" height="9" fill="var(--cream)" stroke="var(--ink)" stroke-width="3"></rect>
+    <!-- antena: la casa también está conectada -->
+    <line x1="372" y1="160" x2="372" y2="110" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"></line>
+    <circle cx="372" cy="106" r="6" fill="var(--coral)" stroke="var(--ink)" stroke-width="3"></circle>
+    <g class="signal" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round">
+      <path d="M384 94 a 18 18 0 0 1 0 24"></path>
+      <path d="M394 86 a 30 30 0 0 1 0 40"></path>
+      <path d="M360 94 a 18 18 0 0 0 0 24"></path>
+      <path d="M350 86 a 30 30 0 0 0 0 40"></path>
+    </g>
+  </g>
+
+  <!-- palmera frontal -->
+  <Palm x={432} y={318} scale={1.05} lean={18} delay={-2.2} />
+
+  <!-- bote -->
+  <g class="boat">
+    <path d="M60 352 h 92 l -14 18 h -64 z" fill="var(--sun)" stroke="var(--ink)" stroke-width="3.5" stroke-linejoin="round"></path>
+    <path d="M70 360 h 72" stroke="var(--coral)" stroke-width="4"></path>
+  </g>
+</svg>
+
+<style>
+  .cursor {
+    animation: blink 1.1s steps(1) infinite;
+  }
+  .signal path {
+    animation: signal 2.4s ease-out infinite;
+    transform-box: view-box;
+  }
+  .signal path:nth-child(2n) {
+    animation-delay: 0.4s;
+  }
+  .foam {
+    animation: foam 16s linear infinite;
+  }
+  .boat {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: rock 5s ease-in-out infinite;
+  }
+  @keyframes signal {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes foam {
+    to {
+      stroke-dashoffset: -360;
+    }
+  }
+  @keyframes rock {
+    0%,
+    100% {
+      transform: rotate(-3deg) translateY(0);
+    }
+    50% {
+      transform: rotate(3deg) translateY(-3px);
+    }
+  }
+</style>

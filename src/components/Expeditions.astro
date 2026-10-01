@@ -1,0 +1,207 @@
+---
+import type { Content } from '../data/profile';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+
+// Cada expedición es una banda del mar de siete colores; de los bajos a lo profundo.
+const bands = [
+  { bg: 'var(--sea-2)', fg: 'var(--ink)', accent: 'var(--sun)' },
+  { bg: 'var(--sea-3)', fg: 'var(--ink)', accent: 'var(--cream)' },
+  { bg: 'var(--sea-5)', fg: 'var(--cream)', accent: 'var(--sun)' },
+  { bg: 'var(--sea-6)', fg: 'var(--cream)', accent: 'var(--sea-2)' },
+  { bg: 'var(--sea-7)', fg: 'var(--cream)', accent: 'var(--coral)' },
+];
+---
+
+<section class="exp" id="expediciones" aria-labelledby="exp-title">
+  <div class="exp__head wrap section">
+    <p class="kicker" data-reveal>{t.expeditions.kicker}</p>
+    <h2 id="exp-title" class="section-title" data-reveal>{t.expeditions.title}</h2>
+    <p class="section-intro" data-reveal>{t.expeditions.intro}</p>
+  </div>
+
+  <ol class="exp__list">
+    {
+      t.expeditions.items.map((item, i) => {
+        const b = bands[i % bands.length];
+        return (
+          <li class="band" style={`--band-bg:${b.bg};--band-fg:${b.fg};--band-accent:${b.accent};z-index:${i + 1}`}>
+            <article class="band__inner wrap" aria-labelledby={`exp-${item.id}`} data-reveal>
+              <header class="band__meta">
+                <span class="band__num" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p class="band__org">
+                  <strong>{item.org}</strong>
+                  <span>{item.period}</span>
+                </p>
+              </header>
+
+              <div class="band__main">
+                <h3 id={`exp-${item.id}`} class="band__title">
+                  {item.title}
+                </h3>
+                <p class="band__context">
+                  <span class="band__label">{t.expeditions.labels.context}</span>
+                  {item.context}
+                </p>
+              </div>
+
+              <div class="band__detail">
+                <p class="band__label">{t.expeditions.labels.did}</p>
+                <ul class="band__did">
+                  {item.did.map((d) => (
+                    <li>{d}</li>
+                  ))}
+                </ul>
+                <p class="band__label">{t.expeditions.labels.tech}</p>
+                <ul class="band__tech">
+                  {item.tech.map((x) => (
+                    <li class="tag">{x}</li>
+                  ))}
+                </ul>
+                {'link' in item && item.link && (
+                  <a class="btn band__link" href={item.link} target="_blank" rel="noopener noreferrer">
+                    {t.expeditions.labels.link}
+                  </a>
+                )}
+              </div>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  .exp {
+    background: var(--sea-1);
+  }
+  .exp__head {
+    padding-top: clamp(16px, 3vw, 40px);
+    padding-bottom: clamp(48px, 7vw, 96px);
+  }
+  .exp__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .band {
+    --skew: clamp(36px, 6vw, 90px);
+    position: relative;
+    margin-top: calc(var(--skew) * -1);
+    padding: calc(var(--skew) + clamp(40px, 6vw, 72px)) 0 clamp(56px, 8vw, 96px);
+    background: var(--band-bg);
+    color: var(--band-fg);
+    clip-path: polygon(0 var(--skew), 100% 0, 100% 100%, 0 100%);
+  }
+  .band:first-child {
+    margin-top: 0;
+  }
+  /* filo crema en el borde diagonal, como las franjas blancas de la referencia */
+  .band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--cream);
+    clip-path: polygon(0 var(--skew), 100% 0, 100% 7px, 0 calc(var(--skew) + 7px));
+  }
+
+  .band__inner {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: start;
+  }
+  .band__num {
+    display: block;
+    font-size: clamp(3.6rem, 2.6rem + 4vw, 6.5rem);
+    font-weight: 800;
+    line-height: 0.85;
+    color: var(--band-accent);
+    -webkit-text-stroke: 3px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 4px 4px 0 var(--ink);
+  }
+  .band__org {
+    display: grid;
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .band__org strong {
+    font-size: 0.92rem;
+  }
+  .band__title {
+    font-size: clamp(1.7rem, 1.2rem + 2vw, 2.7rem);
+  }
+  .band__context {
+    margin-top: 18px;
+    font-size: 1.05em;
+    opacity: 0.92;
+  }
+  .band__label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+  }
+  .band__detail .band__label:not(:first-child) {
+    margin-top: 22px;
+  }
+  .band__did {
+    display: grid;
+    gap: 10px;
+  }
+  .band__did li {
+    position: relative;
+    padding-left: 26px;
+  }
+  .band__did li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--band-accent);
+    border: 2.5px solid var(--ink);
+  }
+  .band__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .band__tech .tag {
+    color: var(--ink);
+  }
+  .band__link {
+    margin-top: 22px;
+  }
+
+  @media (max-width: 980px) {
+    .band__inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .band__meta {
+      display: flex;
+      align-items: end;
+      gap: 16px;
+    }
+    .band__org {
+      margin: 0 0 4px;
+    }
+  }
+</style>

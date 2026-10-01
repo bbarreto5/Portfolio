@@ -1,0 +1,104 @@
+---
+// Ojo de buey para la foto. Mientras `profile.photo` sea null muestra las iniciales
+// y, solo en desarrollo, una etiqueta "foto pendiente" para identificar el placeholder.
+import { profile } from '../../data/profile';
+
+interface Props {
+  alt: string;
+  pendingLabel: string;
+  class?: string;
+}
+const { alt, pendingLabel, class: className } = Astro.props;
+const bolts = Array.from({ length: 8 }, (_, i) => (i * 360) / 8);
+---
+
+<div class:list={['porthole', className]}>
+  <div class="porthole__ring">
+    {bolts.map((deg) => <span class="porthole__bolt" style={`--deg:${deg}deg`} aria-hidden="true" />)}
+    <div class="porthole__glass">
+      {
+        profile.photo ? (
+          <img src={profile.photo} alt={alt} width="400" height="400" loading="eager" decoding="async" fetchpriority="high" />
+        ) : (
+          <div class="porthole__placeholder" role="img" aria-label={profile.name}>
+            <span class="porthole__initials" aria-hidden="true">{profile.initials}</span>
+            {import.meta.env.DEV && <span class="porthole__pending">{pendingLabel}</span>}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .porthole {
+    --size: clamp(150px, 19vw, 250px);
+    width: var(--size);
+    aspect-ratio: 1;
+  }
+  .porthole__ring {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--sun);
+    border: var(--outline-thick) solid var(--ink);
+    box-shadow: var(--shadow-cel);
+    padding: calc(var(--size) * 0.075);
+  }
+  .porthole__bolt {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    transform: rotate(var(--deg)) translateY(calc(var(--size) * -0.455));
+  }
+  .porthole__glass {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: var(--outline) solid var(--ink);
+    background: var(--sea-3);
+  }
+  .porthole__glass img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .porthole__placeholder {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 30% 28%, rgb(255 255 255 / 0.35) 0 14%, transparent 15%),
+      linear-gradient(160deg, var(--sea-2) 0 48%, var(--sea-3) 48% 70%, var(--sea-5) 70%);
+  }
+  .porthole__initials {
+    font-size: calc(var(--size) * 0.28);
+    font-weight: 800;
+    color: var(--cream);
+    -webkit-text-stroke: 3px var(--ink);
+    paint-order: stroke fill;
+    letter-spacing: -0.02em;
+  }
+  .porthole__pending {
+    position: absolute;
+    bottom: 14%;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--coral);
+    border: 2px dashed var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+</style>

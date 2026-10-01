@@ -1,0 +1,54 @@
+---
+// Bandas diagonales del "mar de los siete colores".
+// De los bajos claros (arriba, donde se apoya el texto) a lo profundo, con bordes ondulados generados.
+interface Props {
+  class?: string;
+  /** Inclinación: cuánto sube la banda de izquierda a derecha (en unidades del viewBox). */
+  rise?: number;
+}
+const { class: className, rise = 230 } = Astro.props;
+
+const W = 1440;
+const H = 600;
+const colors = ['--sea-1', '--sea-2', '--sea-3', '--sea-4', '--sea-5', '--sea-6', '--sea-7'];
+const start = 250;
+const step = 50;
+
+function band(i: number) {
+  const left = start + i * step;
+  const right = left - rise;
+  const seg = 8;
+  const amp = 7 + (i % 3) * 2;
+  let d = `M0 ${left}`;
+  for (let s = 0; s < seg; s++) {
+    const x0 = (s / seg) * W;
+    const x1 = ((s + 1) / seg) * W;
+    const y1 = left + ((right - left) * (s + 1)) / seg;
+    const yMid = left + ((right - left) * (s + 0.5)) / seg + (s % 2 ? amp : -amp);
+    d += ` Q${((x0 + x1) / 2).toFixed(0)} ${yMid.toFixed(0)} ${x1.toFixed(0)} ${y1.toFixed(0)}`;
+  }
+  const top = d;
+  d += ` L${W} ${H} L0 ${H} Z`;
+  return { d, top };
+}
+
+const bands = colors.map((c, i) => ({ color: `var(${c})`, ...band(i - 1) }));
+---
+
+<svg class={className} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  {
+    bands.map((b, i) => (
+      <g>
+        <path d={b.d} fill={b.color} />
+        <path
+          d={b.top}
+          fill="none"
+          stroke={i % 2 ? 'var(--cream)' : 'var(--ink)'}
+          stroke-width={i % 2 ? 5 : 2.5}
+          stroke-opacity={i % 2 ? 0.85 : 0.5}
+          vector-effect="non-scaling-stroke"
+        />
+      </g>
+    ))
+  }
+</svg>
