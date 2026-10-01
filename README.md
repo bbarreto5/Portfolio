@@ -32,10 +32,13 @@ src/
 scripts/                 ← generación de la imagen Open Graph
 ```
 
+## Foto de perfil
+
+`public/images/brandon.webp` se genera desde la foto original con `scripts/stylize-photo.py` (recorte del fondo, tonos cel-shaded, contorno de tinta y sombra marina). Las instrucciones están en la cabecera del script. La ruta se configura en `profile.photo` (`src/data/profile.ts`); con `null` el ojo de buey vuelve a mostrar las iniciales.
+
 ## Pendientes (placeholders)
 
 | Qué | Dónde |
 | --- | --- |
 | Dominio definitivo | `SITE_URL` en `astro.config.mjs`, `url` en `scripts/generate-og.mjs`, `public/robots.txt` → luego `npm run og` |
-| Foto | Guardar en `public/images/` y poner la ruta en `profile.photo` (`src/data/profile.ts`). En `npm run dev` el ojo de buey muestra "foto pendiente" |
 | Enlaces de proyectos | Campo opcional `link` en cada expedición de `src/data/profile.ts` |

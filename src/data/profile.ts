@@ -11,8 +11,8 @@ export const profile = {
   email: 'brandonbarretolozano@gmail.com',
   linkedin: 'https://www.linkedin.com/in/bbarreto5',
   github: 'https://github.com/bbarreto5',
-  // PLACEHOLDER: cuando esté la foto, guardarla en /public/images/ y poner la ruta, p. ej. '/images/brandon.webp'
-  photo: null as string | null,
+  // Foto estilizada con scripts/stylize-photo.py (recorte sin fondo, se compone sobre el mar del ojo de buey)
+  photo: '/images/brandon.webp' as string | null,
   origin: { place: 'San Andrés Isla, Colombia', coords: '12.58° N · 81.70° W' },
   base: { place: 'Barranquilla, Colombia', coords: '10.96° N · 74.78° W' },
   experienceSince: 2018,
